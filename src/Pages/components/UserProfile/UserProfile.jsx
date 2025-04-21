@@ -185,7 +185,8 @@ export default function UserProfile() {
       if (profilePhoto) {
         const timestamp = new Date().getTime();
         // const photoUrl = `https://lms1-494718652739.us-central1.run.app/uploads/${encodeURIComponent(user.email.replace('@', '_at_').replace('.', '_dot_'))}/photo.jpg?t=${timestamp}`;
-        const photoUrl = `https://lms1-494718652739.us-central1.run.app/profilepic/${encodeURIComponent(user.email)}?t=${timestamp}`;
+        // const photoUrl = `https://lms1-494718652739.us-central1.run.app/profilepic/${encodeURIComponent(user.email)}?t=${timestamp}`;
+        const photoUrl = `https://lms1-494718652739.us-central1.run.app/profilepic/${encodeURIComponent(user.email)}`;
         setPhotoPreview(photoUrl);
         
         // ADD THIS LINE - Update the profile photo in AuthContext
