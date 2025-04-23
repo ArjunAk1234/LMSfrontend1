@@ -261,7 +261,7 @@ export default function CourseManagement() {
             )}
           </div>
 
-          <div className="note-section mt-4">
+{/*           <div className="note-section mt-4">
             <h2 className="text-xl font-semibold">Notes</h2>
             {notes.length > 0 ? (
               <ul className="note-list list-disc pl-5">
@@ -280,7 +280,41 @@ export default function CourseManagement() {
             ) : (
               <p className="no-notes-message text-gray-600 mt-2">No notes available</p>
             )}
-          </div>
+          </div> */}
+          <div className="note-section mt-4">
+  <h2 className="text-xl font-semibold">Notes</h2>
+  {notes.length > 0 ? (
+    <ul className="note-list list-disc pl-5">
+      {notes.map((note) => {
+        if (note.startsWith("link:")) {
+          const [name, url] = note.replace("link:", "").split("|");
+          return (
+            <li key={note}>
+              <a href={url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                {name}
+              </a>
+            </li>
+          );
+        } else {
+          return (
+            <li key={note}>
+              <a
+                href={`https://lms1-494718652739.us-central1.run.app/courses/${selectedCourse.name}/downloadNotes/${note}`}
+                download
+                className="text-blue-600 underline"
+              >
+                {note}
+              </a>
+            </li>
+          );
+        }
+      })}
+    </ul>
+  ) : (
+    <p className="no-notes-message text-gray-600 mt-2">No notes available</p>
+  )}
+</div>
+
 
           {isAdmin && (
             <div className="admin-actions mt-6">
